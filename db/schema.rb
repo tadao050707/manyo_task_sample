@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2021_10_03_070015) do
   enable_extension "plpgsql"
 
   create_table "labels", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
