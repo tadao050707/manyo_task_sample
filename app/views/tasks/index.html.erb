@@ -1,0 +1,55 @@
+<h1><%= t('.title') %></h1>
+
+<%= form_with url: tasks_path, scope: :search, method: :get, local: true do |f| %>
+  <div class="field">
+    <%= f.label Task.human_attribute_name(:status) %>
+    <%= f.select :status, Task.statuses.map { |k, v| [t("enum.task.status.#{k}"), k] }, include_blank: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label Task.human_attribute_name(:title) %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label Task.human_attribute_name(:label) %>
+    <%= f.select :label_id, current_user.labels.map { |l| [l.name, l.id] }, include_blank: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit t('.submit_search'), id: 'search_task' %>
+  </div>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= Task.human_attribute_name(:title) %></th>
+      <th><%= Task.human_attribute_name(:content) %></th>
+      <th><%= Task.human_attribute_name(:created_at) %></th>
+      <th><%= link_to Task.human_attribute_name(:deadline_on), sort_column: :deadline_on, direction: 'ASC', id: "test" %></th>
+      <th><%= link_to Task.human_attribute_name(:priority), sort_column: :priority, direction: 'DESC' %></th>
+      <th><%= Task.human_attribute_name(:status) %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.title %></td>
+        <td><%= task.content %></td>
+        <td><%= task.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+        <td><%= task.deadline_on %></td>
+        <td><%= t("enum.task.priority.#{task.priority}") %></td>
+        <td><%= t("enum.task.status.#{task.status}") %></td>
+        <td><%= link_to t('common.show'), task, class: 'show-task' %></td>
+        <td><%= link_to t('common.edit'), edit_task_path(task), class: 'edit-task' %></td>
+        <td><%= link_to t('common.destroy'), task, method: :delete, data: { confirm: t('common.confirm_destroy') }, class: 'destroy-task' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= paginate @tasks %>

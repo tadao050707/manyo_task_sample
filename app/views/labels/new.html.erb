@@ -1,0 +1,24 @@
+<h1><%= t('.title') %></h1>
+
+<%= form_with model: @label, local: true do |f| %>
+  <% if @label.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% @label.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit nil, id: 'create-label' %>
+  </div>
+<% end %>
+
+<%= link_to t('common.back'), labels_path, id: 'back' %>

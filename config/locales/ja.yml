@@ -1,0 +1,141 @@
+ja:
+  activerecord:
+    models:
+      task: タスク
+      label: ラベル
+    attributes:
+      task:
+        title: タイトル
+        content: 内容
+        created_at: 作成日時
+        deadline_on: 終了期限
+        priority: 優先度
+        status: ステータス
+      label:
+        name: 名前
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認）
+        admin: 管理者権限
+      session:
+        email: メールアドレス
+        password: パスワード
+  errors:
+    format: "%{attribute}%{message}"
+    messages:
+      blank: を入力してください
+      confirmation: と%{attribute}の入力が一致しません
+      too_short: は%{count}文字以上で入力してください
+      taken: はすでに使用されています
+      prevent_changing_admin: 管理者権限を持つアカウントが0件になるため更新できません
+  helpers:
+    submit:
+      create: 登録する
+      update: 更新する
+  common:
+    show: 詳細
+    edit: 編集
+    destroy: 削除
+    back: 戻る
+    confirm_destroy: 本当に削除してもよろしいですか？
+    require_login: ログインしてください
+    require_logout: ログアウトしてください
+    admin_required: 管理者以外はアクセスできません
+    require_correct_user: 本人以外アクセスできません
+  global_navigation:
+    users_index: ユーザ一覧
+    new_user: ユーザを登録する
+    tasks_index: タスク一覧
+    new_task: タスクを登録する
+    labels_index: ラベル一覧
+    new_label: ラベルを登録する
+    my_account: アカウント詳細
+    logout: ログアウト
+    sign_up: アカウント登録
+    login: ログイン
+  tasks:
+    index:
+      title: タスク一覧ページ
+      submit_search: 検索
+    new:
+      title: タスク登録ページ
+    edit:
+      title: タスク編集ページ
+    show:
+      title: タスク詳細ページ
+    create:
+      created: タスクを登録しました
+    update:
+      updated: タスクを更新しました
+    destroy:
+      destroyed: タスクを削除しました
+  labels:
+    index:
+      title: ラベル一覧ページ
+      registered_tasks_count: タスク数
+    new:
+      title: ラベル登録ページ
+    edit:
+      title: ラベル編集ページ
+    show:
+      title: ラベル詳細ページ
+    create:
+      created: ラベルを登録しました
+    update:
+      updated: ラベルを更新しました
+    destroy:
+      destroyed: ラベルを削除しました
+  users:
+    new:
+      title: アカウント登録ページ
+    edit:
+      title: アカウント編集ページ
+    show:
+      title: アカウント詳細ページ
+    create:
+      created: アカウントを登録しました
+    update:
+      updated: アカウントを更新しました
+  admin:
+    users:
+      index:
+        title: ユーザ一覧ページ
+        registered_tasks_count: タスク数
+        admin_true: あり
+        admin_false: なし
+      new:
+        title: ユーザ登録ページ
+      edit:
+        title: ユーザ編集ページ
+      show:
+        title: ユーザ詳細ページ
+        admin_true: あり
+        admin_false: なし
+      create:
+        created: ユーザを登録しました
+      update:
+        updated: ユーザを更新しました
+      destroy:
+        destroyed: ユーザを削除しました
+        prevent_removing_admin: 管理者権限を持つアカウントが0件になるため削除できません
+  sessions:
+    new:
+      title: ログインページ
+      login: ログイン
+    create:
+      logged_in: ログインしました
+      email_or_password_wrong: メールアドレスまたはパスワードに誤りがあります
+    destroy:
+      logged_out: ログアウトしました
+  enum:
+    task:
+      status:
+        not_yet: 未着手
+        in_progress: 着手中
+        done:  完了
+      priority:
+        low: 低
+        mid: 中
+        high: 高

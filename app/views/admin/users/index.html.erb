@@ -1,0 +1,35 @@
+<h1><%= t('.title') %></h1>
+<%= paginate @users %>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= User.human_attribute_name(:name) %></th>
+      <th><%= User.human_attribute_name(:email) %></th>
+      <th><%= User.human_attribute_name(:admin) %></th>
+      <th><%= t('.registered_tasks_count') %></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td>
+          <% if user.admin? %>
+            <%= t(".admin_true") %>
+          <% else %>
+            <%= t(".admin_false") %>
+          <% end %>
+        </td>
+        <td><%= user.tasks.pluck(:title).size %></td>
+        <td><%= link_to t('common.show'), admin_user_path(user), class: 'show-user' %></td>
+        <td><%= link_to t('common.edit'), edit_admin_user_path(user), class: 'edit-user' %></td>
+        <td><%= link_to t('common.destroy'), admin_user_path(user), method: :delete, data: { confirm: t('common.confirm_destroy') }, class: 'destroy-user' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
